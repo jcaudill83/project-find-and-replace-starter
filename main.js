@@ -10,7 +10,7 @@ const replaceAllButton = document.querySelector(".replace-all-button")
 // this array.
 const rowElements = document.querySelectorAll(".row")
 
-// When you call the function belwo, it will get and return an INNER ARRAY
+// When you call the function below, it will get and return an INNER ARRAY
 // containing the cell elements for a given row.
 // Call this function from WITHIN your row elements loop. Then you will, in turn,
 // need to loop over the resulting cell elements. But where should this whole
@@ -20,7 +20,18 @@ function getCellElements (currentRowElement) {
 }
 
 
-// YOUR CODE GOES HERE
+replaceAllButton.addEventListener('click' , function() {
+    let find = findInput.value
+    let replaceValue = replaceInput.value
+    for (let index = 0; index < rowElements.length; index += 1){
+        let currentCell = getCellElements(rowElements[index])
+        for (let cellIndex = 0; cellIndex < currentCell.length; cellIndex += 1){
+            if (currentCell[cellIndex].innerText.includes(find)){
+                currentCell[cellIndex].innerHTML = currentCell[cellIndex].innerHTML.replace(find, replaceValue);
+            }
+        }
+    }
+})
 
 
 // One last thing: dedicate very careful attention to using variables and
